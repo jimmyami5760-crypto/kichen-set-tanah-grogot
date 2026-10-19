@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream font-sans text-walnut antialiased selection:bg-gold selection:text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c69c47;
+    outline-offset: 3px;
+  }
+
+  /* Accessible touch targets on mobile */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-28;
+  }
+
+  /* Buttons: strict minimum touch target 44px */
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-gold {
+    @apply btn bg-gold text-ink shadow-subtle hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-card focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+
+  .btn-dark {
+    @apply btn bg-walnut text-cream shadow-subtle hover:-translate-y-0.5 hover:bg-ink hover:text-white hover:shadow-card focus-visible:ring-2 focus-visible:ring-walnut focus-visible:ring-offset-2;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-white/35 bg-white/5 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-gold hover:bg-white/15 hover:text-gold-light;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-walnut/20 bg-transparent text-walnut hover:-translate-y-0.5 hover:border-gold hover:bg-gold/10 hover:text-ink;
+  }
+
+  /* Form inputs */
+  .input {
+    @apply min-h-[46px] w-full rounded-xl border border-walnut/15 bg-white px-4 py-3 text-sm text-walnut transition-colors duration-200 placeholder:text-walnut/40 hover:border-walnut/30 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 disabled:cursor-not-allowed disabled:bg-walnut/5;
+  }
+
+  /* Card and surface primitives */
+  .card-surface {
+    @apply rounded-3xl border border-walnut/10 bg-white p-6 shadow-card transition-all duration-300 hover:shadow-elevated sm:p-8;
+  }
+
+  .card-dark {
+    @apply rounded-3xl border border-white/10 bg-walnut p-6 text-cream shadow-elevated sm:p-8;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold-dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
